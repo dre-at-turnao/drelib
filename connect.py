@@ -9,7 +9,16 @@ from utility import flush_print
 # examples: http://zetcode.com/db/mysqlpython/
 
 def conn(instance):
-    return mdb.connect(host=instance.host, port=instance.port, user=instance.user)
+    if instance.passwd:
+        return mdb.connect(host=instance.host,
+                           port=instance.port,
+                           user=instance.user,
+                           passwd=instance.passwd
+                          )
+    return mdb.connect(host=instance.host,
+                       port=instance.port,
+                       user=instance.user
+                      )
 
 def execute(conn=None, stmt="", verbose=False):
     """
