@@ -7,6 +7,7 @@ from connect import (
         execute,
         )
 from database_common import (
+        get_passwd,
         change_master,
         reset_master,
         reset_slave_all,
@@ -27,10 +28,12 @@ class Instance(object):
         self.name = "{host}:{port}".format(host=self.host, port=self.port)
         self.ip = None
 
+#         self.user = "dba"
+#         self.passwd = "C4USAL8788"
+
+    def get_passwd(self):
         self.user = "dba"
-        self.passwd = "C4USAL8788"
-#         self.user = "root"
-#         self.passwd = ""
+        self.passwd = get_passwd() 
 
     def get_connection(self):
         self.connection = conn(self)

@@ -1,5 +1,8 @@
+import ConfigParser
+import os
 import socket
 import time
+
 
 def show_master_status(instance):
     """
@@ -267,3 +270,14 @@ def is_replication_in_sync(master_instance=None, slave_instance=None, retries=5,
     print "replication sync failed"
 
 
+def get_passwd(user='root'):
+    """   
+    Temporary function until we figure out how to manage user and password info.
+    """   
+    config = ConfigParser.ConfigParser()
+    config.readfp(open("{HOME}/.my.cnf".format(HOME=os.environ['HOME'])))
+
+    return config.get("client","password")
+
+
+     
