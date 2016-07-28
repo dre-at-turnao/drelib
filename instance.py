@@ -28,9 +28,6 @@ class Instance(object):
         self.name = "{host}:{port}".format(host=self.host, port=self.port)
         self.ip = None
 
-#         self.user = "dba"
-#         self.passwd = "C4USAL8788"
-
     def get_passwd(self):
         self.user = "dba"
         self.passwd = get_passwd() 
